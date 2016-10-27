@@ -1,0 +1,161 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.logo {
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 80px;
+}
+
+.header {
+	height: 90px;
+	background-image: url("congruent_pentagon.png");
+    background-attachment: fixed;
+}
+
+.site-title {
+	vertical-align: baseline;
+	padding: 15px;
+}
+
+.text-right {
+	float: right;
+}
+
+a:link {
+	color: white;
+}
+
+a:hover {
+	color: #5bdb99;
+}
+
+a:active {
+	color: #ed564b;
+}
+
+.glyphicon {
+  font-size: 35px;
+  color: #5bdb99;
+}
+
+.menu {
+	display: inline-block;
+	white-space: nowrap;
+	width:350px;
+	height: 90px;
+	padding: 5px;
+  margin: 5px;
+}
+
+.menu-item {
+	float: left;
+  list-style-type: none;
+  padding: 5px;
+  margin: 5px;
+}
+
+.pre-footer {
+	height: 300px;
+	color: white;
+	background-image: url("congruent_pentagon.png");
+}
+
+.start-btn {
+	background-color:none;
+	color: #292727;
+	font-size: 80px;
+	margin-top:70px;
+	border-radius: 25px;
+	border-color: white;
+}
+
+.footer {
+	height: 78px;
+	background-color: #292727;
+	color: white;
+	padding: 25px;
+}
+
+.btn-circle.btn-lg {
+  width: 150px;
+  height: 150px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  background-color: #292727;
+  color: white;
+  position: absolute;
+  left: 25%;
+}
+
+.categories {
+  display: inline-block;
+  width: 250px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+  background-color: #292727;
+  color: white;
+  border:6px #5bdb99 solid;
+}
+
+.row {
+	padding: 10px;
+}
+
+.add-decision {
+	margin: 0 auto;
+}
+
+.category-list{
+	height: 300px;
+}
+
+.problem-btn {
+	margin: 10px;
+}
+
+#decision-hover {
+	display: none;
+	font-size: 11px;
+}
+
+.decision-tree-btn:hover #decision-hover {
+	display:block
+}
+
+#breakeven-hover {
+	display: none;
+	font-size: 11px;
+}
+
+.break-even-btn:hover #breakeven-hover {
+	display:block
+}
+
+#crossover-hover {
+	display: none;
+	font-size: 11px;
+}
+
+.crossover-btn:hover #crossover-hover {
+	display:block;
+}
