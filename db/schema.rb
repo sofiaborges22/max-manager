@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027132957) do
+ActiveRecord::Schema.define(version: 20161027154827) do
+
+  create_table "decisions", force: :cascade do |t|
+    t.string   "title"
+    t.float    "associated_cost"
+    t.integer  "favorable_probability"
+    t.float    "unfavorable_probability"
+    t.float    "favorable_result"
+    t.float    "unfavorable_result"
+    t.integer  "problem_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["problem_id"], name: "index_decisions_on_problem_id"
+  end
+
+  create_table "problems", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "category"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_problems_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
