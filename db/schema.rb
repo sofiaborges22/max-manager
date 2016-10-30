@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027154827) do
+ActiveRecord::Schema.define(version: 20161030113840) do
+
+  create_table "break_evens", force: :cascade do |t|
+    t.string   "title"
+    t.float    "fixed_cost"
+    t.float    "selling_price"
+    t.float    "variable_cost"
+    t.integer  "problem_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["problem_id"], name: "index_break_evens_on_problem_id"
+  end
+
+  create_table "crossovers", force: :cascade do |t|
+    t.string   "title"
+    t.float    "units"
+    t.float    "fixed_cost"
+    t.float    "variable_cost"
+    t.integer  "problem_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["problem_id"], name: "index_crossovers_on_problem_id"
+  end
 
   create_table "decisions", force: :cascade do |t|
     t.string   "title"

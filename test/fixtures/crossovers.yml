@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  units: 1.5
+  fixed_cost: 1.5
+  variable_cost: 1.5
+  problem: one
+
+two:
+  title: MyString
+  units: 1.5
+  fixed_cost: 1.5
+  variable_cost: 1.5
+  problem: two
