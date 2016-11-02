@@ -1,5 +1,6 @@
 class DecisionsController < ApplicationController
 	def index
+		@problem = Problem.find_by(id: params[:problem_id])
 		@decisions = Decision.all
 	end
 
@@ -23,13 +24,13 @@ class DecisionsController < ApplicationController
 	# 	end
 	# end
 
-	# def destroy
-	# 	# @user = User.find_by(id: params[:user_id])
-	# 	# @problem = Problem.find_by(id: params[:problem_id])
-	# 	decision = Decision.find_by(id: params[:id])
-	# 	decision.destroy
-	# 	redirect_to :back
-	# end
+	def destroy
+		# @user = User.find_by(id: params[:user_id])
+		@problem = Problem.find_by(id: params[:problem_id])
+		@decision = Decision.find_by(id: params[:id])
+		decision.destroy
+		redirect_to :back
+	end
 
 	private
 	def decision_params 

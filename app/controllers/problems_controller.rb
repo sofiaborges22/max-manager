@@ -6,8 +6,7 @@ class ProblemsController < ApplicationController
 	end
 
 	def show
-		@user = User.find_by(id: params[:id])
-		@problem = @user.problems.find_by(id: params[:id])
+		@problem = Problem.find_by(id: params[:id])
 	end
 
 	def new
