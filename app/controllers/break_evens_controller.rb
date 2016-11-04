@@ -9,13 +9,12 @@ class BreakEvensController < ApplicationController
 	end
 
 	def show
-		@user = User.find_by(id: params[:user_id])
 		@problem = Problem.find_by(id: params[:problem_id])
 		@break_even = @problem.break_evens.all
-
+		
 		@break_even.each do |breakeven|
-			if breakeven.fixed_costs != nil && breakeven.variable_cost != nil
-				@units_sold = (breakeven.fixed_costs) / ((breakeven.selling_price) - (breakeven.variable_cost)) 
+			if breakeven.fixed_cost != nil && breakeven.variable_cost != nil
+				@units_sold = (breakeven.fixed_cost) / ((breakeven.selling_price) - (breakeven.variable_cost)) 
 			end
 		end
 
@@ -30,16 +29,15 @@ class BreakEvensController < ApplicationController
 		end
 	end
 
-	# def create
-	# 	@user = User.find_by(id: params[:user_id])
-	# 	@problem = @user.problems.find_by(id: params[:problem_id])
-	# 	@break_even = @problem.break_evens.new(breakeven_params)
-	# 	if @break_even.save
-	# 		redirect_to user_problem_break_even_path(@user, @problem, @break_even)
-	# 	else
-	# 		render text => "Break Even Analysis not saved"
-	# 	end
-	# end
+	def create
+		@problem = Problem.find_by(id: params[:problem_id])
+		@break_even = @problem.break_evens.new(breakeven_params)
+		if @break_even.save
+			redirect_to problem_break_even_path(@problem, @break_even)
+		else
+			render text => "Break Even Analysis not saved"
+		end
+	end
 
 	# def form_break_even
 	# 	@user = User.find_by(id: session[:user_id])
@@ -57,7 +55,7 @@ class BreakEvensController < ApplicationController
 
 	private
 	def breakeven_params
-		params.require(:break_even).permit(:fixed_costs, :selling_price, :variable_cost)
+		params.require(:break_even).permit(:fixed_cost, :selling_price, :variable_cost)
 	end
 
 end

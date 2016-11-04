@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-12">
         <h2>Fill out this form to create a decision option</h2><br>
-        <%= form_for @new_decision, url:user_problem_decisions_path(@user, @problem), html: {class: "form-horizontal"}  do |f|%>
+        <%= form_for @new_decision, url:problem_decisions_path(@problem), html: {class: "form-horizontal"}  do |f|%>
           
           <div class="form-group">
             <%= f.label(:title, "Decision *", class: "col-sm-4 control-label") %>

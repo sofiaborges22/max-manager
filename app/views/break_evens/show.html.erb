@@ -14,12 +14,13 @@
 			<h3>What's happening here?</h3><br>
 			<p><h4>The break even point (BEP) represents the amount of units that is required to cover total costs, consisting of both fixed and variable costs to your company. It allows for you to identify the minimum required goal your company needs to achieve. At the break even point, profit is still zero, however, all your costs have been "paid" for.</h4></p>
 			<p><h4>This means that your company will break even when it sells <%= @units_sold.to_i %> units.</h4></p>
-			<p><%= link_to "Download analysis in PDF", user_problem_break_even_path(@user, @problem, @break_even, format: "pdf"), style: "color:black;"%></p>
+			<p><%= link_to "Download analysis in PDF", problem_break_even_path(@problem, @break_even, format: "pdf"), style: "color:black;"%></p>
 			<br>
+			
 		</div>
 	</div>
 
 	<div class="col-xs-3" style="margin-bottom: 30px;">
-		<%= button_to "Back to form", new_user_problem_break_even_path(@user, @problem, @breakeven), :method => "get", :class => "btn btn-primary"%>
+		<%= button_to "Back to form", new_problem_break_even_path(@problem), :method => "get", :class => "btn btn-primary"%>
 	</div>
 </div>

@@ -27,7 +27,7 @@ class ProblemsController < ApplicationController
 	def destroy
 		problem = Problem.find_by(id: params[:id])
 		problem.destroy
-		redirect_to user_path
+		redirect_to profile_path(current_user)
 	end
 
 	def form_decision

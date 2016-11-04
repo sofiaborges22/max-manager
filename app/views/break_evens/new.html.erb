@@ -7,13 +7,13 @@
   </div>
 
   <div class="row info">
-    <%= form_for @new_break_even, url:user_problem_break_evens_path(@user, @problem, @break_even) do |f|%>
+    <%= form_for @new_break_even, url:problem_break_evens_path(@problem) do |f|%>
       <div class="col-xs-8"> 
         <div class="form-horizontal" style="margin-bottom: 50px;">
           <div class="form-group">
-            <%= f.label(:fixed_costs, "Fixed costs *", class: "col-xs-3 control-label") %>
+            <%= f.label(:fixed_cost, "Fixed costs *", class: "col-xs-3 control-label") %>
             <div class="col-xs-8">
-                <%= f.number_field :fixed_costs, placeholder:"What are the fixed costs?", class: "form-control"  %>
+                <%= f.number_field :fixed_cost, class: :text_field, step: :any, placeholder:"What are the fixed costs?", class: "form-control"  %>
             </div>
           </div>
 

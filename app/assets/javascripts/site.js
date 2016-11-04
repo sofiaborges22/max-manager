@@ -1,4 +1,12 @@
 $(function(){
+	$('#decision_favorable_probability').on('input',function(){
+		$('#decision_unfavorable_probability').val(100 - $(this).val())
+	})
+
+	$('#decision_unfavorable_probability').on('input',function(){
+		$('#decision_favorable_probability').val(100 - $(this).val())
+	})
+
 	$('.decision-tree-btn').on('click', function(){
 		$('#problems').empty();
 		$.ajax({
@@ -11,11 +19,12 @@ $(function(){
 				var decisions = problems_decisions.forEach(function(decision){
 					var decisionTitle = decision.title;
 					var decisionDescription = decision.description;
+					var problem = decision.id
 					$('#problems').show()
 					$('#problems').append($('<h3>').text(decisionTitle));
 					$('#problems').append($('<h5>').text(decisionDescription));
-					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" href="/users/'+decision.user_id+'/problems/'+decision.id+'/form_decision">Analyze</a>'));
-					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" data-confirm="Are you sure?" data-method="delete" href="/users/'+decision.user_id+'/problems/'+decision.id+'">Delete</a>'));
+					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" href="/problems/' + problem + '/decisions">Analyze</a>'));
+					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" data-confirm="Are you sure?" data-method="delete" href="/problems/'+ problem +'">Delete</a>'));
 				})
 			},
 			error: function(error){
@@ -37,11 +46,12 @@ $(function(){
 				var break_evens = problems_break_even.forEach(function(break_even){
 					var breakEvenTitle = break_even.title;
 					var breakEvenDescription = break_even.description;
+					var problem = break_even.id
 					$('#problems').show()
 					$('#problems').append($('<h3>').text(breakEvenTitle));
 					$('#problems').append($('<h5>').text(breakEvenDescription));
-					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" href="/users/' + break_even.user_id + '/problems/' + break_even.id + '/break_evens/new">Analyze</a>'));
-					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" data-confirm="Are you sure?" data-method="delete" href="/users/' + break_even.user_id + '/problems/' + break_even.id + '">Delete</a>'));
+					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" href="/problems/'+ problem +'/break_evens/new">Analyze</a>'));
+					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" data-confirm="Are you sure?" data-method="delete" href="/problems/'+ problem +'">Delete</a>'));
 				})
 
 			},
@@ -62,13 +72,14 @@ $(function(){
 				})
 
 				var crossovers = problems_crossover.forEach(function(crossover){
-					crossoverTitle = crossover.title;
-					crossoverDescription = crossover.description;
+					var crossoverTitle = crossover.title;
+					var crossoverDescription = crossover.description;
+					var problem = crossover.id
 					$('#problems').show()
 					$('#problems').append($('<h3>').text(crossoverTitle));
 					$('#problems').append($('<h5>').text(crossoverDescription));
-					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" href="/users/'+crossover.user_id+'/problems/'+crossover.id+'/form_crossover">Analyze</a>'));
-					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" data-confirm="Are you sure?" data-method="delete" href="/users/' + crossover.user_id + '/problems/' + crossover.id + '">Delete</a>'));					
+					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" href="/problems/'+ problem +'/crossover_analysis">Analyze</a>'));
+					$('#problems').append($('<a class="problem-btn btn btn-primary btn-xs" data-confirm="Are you sure?" data-method="delete" href="/problems/'+ problem +'">Delete</a>'));					
 				})
 			},
 			error: function(error){

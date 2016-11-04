@@ -1,6 +1,7 @@
 class CrossoverAnalysisController < ApplicationController
 	def index
-		@crossover = Crossover.all
+		@problem = Problem.find_by(id: params[:problem_id])
+		@crossover = @problem.crossovers.all
 	end
 
 	def new
@@ -9,10 +10,8 @@ class CrossoverAnalysisController < ApplicationController
 	end
 
 	def show 
-		@user = User.find_by(id: params[:user_id])
 		@problem = Problem.find_by(id: params[:problem_id])
 		@crossover = @problem.crossovers.all
-
 		@lowest_total_cost = @crossover.min_by do |crossover|
 			@result_total_cost = (crossover.units * crossover.variable_cost)+crossover.fixed_cost
 		end
@@ -28,26 +27,22 @@ class CrossoverAnalysisController < ApplicationController
 		end
 	end
 
-	# def create
-	# 	@user = User.find_by(id: params[:user_id])
-	# 	@problem = @user.problems.find_by(id: params[:problem_id])
-	# 	@crossover = @problem.crossovers.new(crossover_params)
-	# 	if @crossover.save
-	# 		redirect_to form_crossover_user_problem_path(@user, @problem, @crossover)
-	# 	else
-	# 		render text => "Crossover Analysis not saved"
-	# 	end
-	# end
+	def create
+		@problem = Problem.find_by(id: params[:problem_id])
+		@crossover = @problem.crossovers.new(crossover_params)
+		if @crossover.save
+			redirect_to problem_crossover_analysis_index_path(@problem)
+		else
+			render text => "Crossover Analysis not saved"
+		end
+	end
 
-	# def destroy
-	# 	# @user = User.find_by(id: params[:user_id])
-	# 	# @problem = Problem.find_by(id: params[:problem_id])
-	# 	# @crossover = @problem.crossovers.find_by(id: params[:id])
-	# 	crossover = Crossover.find_by(id: params[:id])
-	# 	crossover.destroy
-		
-	# 	redirect_to :back
-	# end
+	def destroy
+		@problem = Problem.find_by(id: params[:problem_id])
+		@crossover = Crossover.find_by("id")
+		@crossover.destroy
+		redirect_to :back
+	end
 
 	private
 	def crossover_params

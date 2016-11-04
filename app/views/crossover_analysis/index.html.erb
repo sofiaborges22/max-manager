@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row problem-title">
+    <div class="col-xs-12">
+      <h2 style='margin: 0 auto; border-radius: 25px; border:2px black solid; font-size:26px; width:fit-content; width:-webkit-fit-content; width:-moz-fit-content; padding: 20px;'>
+        <%= @problem.title %></h2>
+    </div>
+  </div>
+
+  <div class="row add-decision">
+    <div class="col-xs-12">
+      <center><%= button_to "Add a decision", new_problem_crossover_analysis_path(@problem), :method => "get", :class => "btn btn-primary btn-lg"%></center>
+    </div>
+  </div>
+
+  <div class="row info" style="height:300px;">
+    <div class="col-xs-8">
+      <ul>
+        <% @crossover.each do |crossover| %>
+          <div class="options" style='border-radius: 25px; border:2px #5bdb99 solid; background-color: #5bdb99; margin:10px; font-size:15px; width:fit-content; width:-webkit-fit-content; width:-moz-fit-content; padding: 10px; display:inline-block;'>
+          <h3><%=crossover.title %></h3>
+              <div class="col-xs-12">
+                <ul style="margin-left:-25px; padding:none;">
+                  <h5><strong>Units to sell:</strong></h5>
+                    <li><%=crossover.units%></li>
+                  <h5><strong>Fixed cost:</strong></h5>
+                    <li><%=number_to_currency(crossover.fixed_cost)%></li>
+                  <h5><strong>Variable cost:</strong></h5>
+                    <li><%=number_to_currency(crossover.variable_cost.to_f)%></li>
+                </ul>
+              </div>            
+
+              <%= button_to 'Delete', problem_crossover_analysis_path(@problem, @crossover), 
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, 
+                style: "margin:9px; float:right;", 
+                class: "btn btn-primary btn-xs"  %>
+          </div>
+        <%end%>
+      </ul>
+    </div>
+    <div class="btn-group col-xs-4">
+      <%= button_to "Result", problem_crossover_analysis_path(@problem, @crossover), :method => "get", :class => "btn btn-default btn-circle btn-lg" %>
+    </div>
+  </div>
+</div>

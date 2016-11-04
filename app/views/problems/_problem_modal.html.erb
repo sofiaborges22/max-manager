@@ -31,8 +31,11 @@
                 <div class="col-sm-9">
                   <%= f.select(:category, ['Decision Tree Tool','Break Even Analysis','Crossover Analysis'], style:"margin:3px; float:left;")%><br>
                 </div>
-              
-                <%= f.submit "Add Problem", class: "btn btn-primary col-sm-6", style: "margin:3px;"%>
+                
+                <div class="col-sm-12">
+                  <%= f.submit "Add Problem", class: "btn btn-primary", style: "margin:20px; padding:7px;"%>
+                </div>
+                
                 <% end %>
             </div>
           </div>

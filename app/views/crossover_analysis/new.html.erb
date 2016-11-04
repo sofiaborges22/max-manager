@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-12">
         <h2>Fill out this form to create a decision option</h2><br>
-        <%= form_for @new_crossover, url:user_problem_crossovers_path(@user, @problem), html: {class: "form-horizontal"}  do |f|%>
+        <%= form_for @new_crossover, url:problem_crossover_analysis_index_path(@problem), html: {class: "form-horizontal"}  do |f|%>
           
           <div class="form-group">
             <%= f.label(:title, "Decision *", class: "col-xs-4 control-label") %>
@@ -22,7 +22,7 @@
           <div class="form-group">
             <%= f.label(:fixed_cost, "Fixed costs *", class: "col-xs-4 control-label") %>
             <div class="col-xs-8">
-              <%= f.number_field :fixed_cost, placeholder:"What are the fixed costs for this decision?", class: "form-control"  %>
+              <%= f.number_field :fixed_cost, step: :any,  placeholder:"What are the fixed costs for this decision?", class: "form-control"  %>
             </div>
           </div>
 
